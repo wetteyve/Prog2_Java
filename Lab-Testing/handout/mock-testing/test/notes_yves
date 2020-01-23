@@ -1,0 +1,55 @@
+Notes for Lab Mock-Testing Yves Wetter
+
+Task 2.b)
+    The difference between spy and mock is:
+    in mock, you are creating a complete mock or fake object
+    Annotation mock:
+    @Mock
+    List<String> mockedList;
+
+    while in spy, there is the real object and you just spying
+    or stubbing specific methods of it
+    Annotation spy:
+    @Spy
+    List<String> spyList = new ArrayList<String>();
+
+Task 2.c)
+    Argument Matchers: Comparison
+    Helper methods mainly to be used with arrays and string functionality
+    // Verify that 2 is greater than 1
+    assertThat(2, greaterThan(1))
+
+    // Verify that “myValue” starts with “my” and contains “Val”
+    assertThat("myValue", allOf(startsWith("my"), containsString("Val")))
+
+    // Verify that every item in the list starts with “ba”
+    assertThat(Arrays.asList("bar", "baz"), everyItem(startsWith("ba")))
+
+    // Verify that the list has the item “bar”
+    assertThat(Arrays.asList("foo", "bar"), hasItem("bar"))
+
+    Argument Matchers: Stubbing:
+    Argument Matchers can also be used to stub the function argument with any value
+    of a defined type. Used to return a defined value on any function argument.
+    Matchers are -anyInt(), -anyString(), anyObject(), ....
+
+    List mockedList = mock(List.class);
+    //stubbing using anyInt() argument matcher
+    when(mockedList.get(anyInt())).thenReturn("elementValue");
+
+    // Returns "elementValue" for any index in the list
+    assertEquals(mockedList.get(0), "elementValue");
+    assertEquals(mockedList.get(1), "elementValue");
+    assertEquals(mockedList.get(2), "elementValue"
+
+Task 3.a)
+    White Box Testing:
+    Also known as logic-driven testing. This strategy tests data from an examination of
+    the programs logic. Exhaustive path testing: execute all possible paths of control
+    flow through the program under test to completely test it.
+
+    Black Box Testing:
+    Also known as data-driven or input/output-driven testing. Completely unconcerned
+    about the internal behaviour and structure of the program. Exhaustive input testing:
+    Make use of every possible input condition. Complete, exhaustive input testing is
+    practically impossible.
